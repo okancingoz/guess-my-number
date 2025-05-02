@@ -7,6 +7,9 @@ module.exports = {
   theme: {
     extend: {
       colors: customColor,
+      fontFamily: {
+        tetris: ["tetris"], 
+      },
     },
   },
   plugins: [],

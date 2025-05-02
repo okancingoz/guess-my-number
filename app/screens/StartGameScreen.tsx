@@ -48,7 +48,7 @@ const StartGameScreen = ({ onPickNumber }: StartGameScreenProps) => {
             keyboardType="number-pad"
             autoCapitalize="none"
             autoCorrect={false}
-            className="w-16 text-3xl text-accent500 border-b-2 border-b-accent500 my-2 font-bold text-center"
+            className="w-16 text-3xl text-accent500 border-b-2 border-b-accent500 my-2 font-tetris text-center"
             onChangeText={numberInputHandler}
             value={enteredNumber}
           />

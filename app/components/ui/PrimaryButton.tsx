@@ -3,7 +3,7 @@ import { TouchableRipple } from "react-native-paper";
 import Colors from "../../utils/constants/colors";
 
 interface PrimaryButtonProps {
-  children: string;
+  children: React.ReactNode;
   onPress: () => void;
 }
 
@@ -19,7 +19,9 @@ const PrimaryButton = ({ children, onPress }: PrimaryButtonProps) => {
         rippleColor={Colors.rippleEffect}
         className="px-2 py-4 elevation-xl"
       >
-        <Text className="text-slate-50 text-center">{children}</Text>
+        <Text className="font-tetris text-slate-50 text-center">
+          {children}
+        </Text>
       </TouchableRipple>
     </View>
   );

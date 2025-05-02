@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import StartGameScreen from "./app/screens/StartGameScreen";
 import GameScreen from "./app/screens/GameScreen";
 import "./global.css";
@@ -7,10 +7,27 @@ import { ImageBackground, SafeAreaView } from "react-native";
 import { useState } from "react";
 import Colors from "./app/utils/constants/colors";
 import GameOverScreen from "./app/screens/GameOverScreen";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
 
+SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [userNumber, setUserNumber] = useState<number>();
   const [gameIsOver, setGameIsOver] = useState<boolean>(true);
+
+  const [loaded, error] = useFonts({
+    'tetris': require("./app/assets/fonts/Tetris.ttf"),
+  });
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
 
   const pickedNumberHandler = (pickedNumber: number) => {
     setUserNumber(pickedNumber);
