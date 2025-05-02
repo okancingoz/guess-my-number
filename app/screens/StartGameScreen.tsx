@@ -1,6 +1,9 @@
 import { TextInput, View, Alert } from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import { useState } from "react";
+import Title from "../components/ui/Title";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 interface StartGameScreenProps {
   onPickNumber: (pickNumber: number) => void;
@@ -32,31 +35,29 @@ const StartGameScreen = ({ onPickNumber }: StartGameScreenProps) => {
   };
 
   return (
-    <View
-      style={{
-        shadowColor: "black",
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 6,
-        shadowOpacity: 0.25,
-      }}
-      className="bg-primary950 mx-6 mt-24 p-4 rounded-2xl elevation-lg shadow-lg"
-    >
-      <View className="justify-center flex-row p-4">
-        <TextInput
-          maxLength={2}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-          autoCorrect={false}
-          className="h-max w-16 text-3xl text-accent500 border-b-2 border-b-accent500 my-2 font-bold text-center"
-          onChangeText={numberInputHandler}
-          value={enteredNumber}
-        />
+    <View className="mt-24">
+      <View className="items-center">
+        <Title>Guess My Number</Title>
       </View>
 
-      <View className="flex-row justify-center">
-        <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
-        <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
-      </View>
+      <Card>
+        <InstructionText>Enter a number</InstructionText>
+        <View className="justify-center flex-row p-4">
+          <TextInput
+            maxLength={2}
+            keyboardType="number-pad"
+            autoCapitalize="none"
+            autoCorrect={false}
+            className="w-16 text-3xl text-accent500 border-b-2 border-b-accent500 my-2 font-bold text-center"
+            onChangeText={numberInputHandler}
+            value={enteredNumber}
+          />
+        </View>
+        <View className="flex-row justify-center items-center">
+          <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+          <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+        </View>
+      </Card>
     </View>
   );
 };

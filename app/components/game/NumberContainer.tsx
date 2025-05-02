@@ -6,7 +6,7 @@ interface NumberContainerProps {
 
 const NumberContainer = ({ children }: NumberContainerProps) => {
   return (
-    <View className="border-4 border-accent500 m-8 p-8 rounded-lg align-middle justify-center">
+    <View className="border-4 border-accent500 mt-8 p-4 rounded-lg align-middle justify-center">
       <Text className="text-accent500 font-bold text-center text-4xl">
         {children}
       </Text>

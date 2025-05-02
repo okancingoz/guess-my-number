@@ -1,8 +1,10 @@
 import { View, Text, Alert } from "react-native";
 import Title from "../components/ui/Title";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 const generateRandomBetween = (min: number, max: number, exclude: number) => {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -23,8 +25,10 @@ let minBoundary = 1;
 let maxBoundary = 100;
 
 const GameScreen = ({ userNumber, onGameOver }: GameScreenProps) => {
-  const initalGuess = generateRandomBetween(1, 100, userNumber);
-  const [currentGuess, setCurrentGuess] = useState<number>(initalGuess);
+  const initialGuess = useMemo(() => {
+    return generateRandomBetween(1, 100, userNumber);
+  }, [userNumber]);
+  const [currentGuess, setCurrentGuess] = useState<number>(initialGuess);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -63,8 +67,8 @@ const GameScreen = ({ userNumber, onGameOver }: GameScreenProps) => {
     <View className="flex-1 p-12">
       <Title>Oppenent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
-        <Text>Higher or lower?</Text>
+      <Card>
+        <InstructionText>Higher or lower?</InstructionText>
         <View className="flex-row">
           <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
             -
@@ -73,7 +77,7 @@ const GameScreen = ({ userNumber, onGameOver }: GameScreenProps) => {
             +
           </PrimaryButton>
         </View>
-      </View>
+      </Card>
     </View>
   );
 };
