@@ -53,9 +53,13 @@ const StartGameScreen = ({ onPickNumber }: StartGameScreenProps) => {
             value={enteredNumber}
           />
         </View>
-        <View className="flex-row justify-center items-center">
-          <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
-          <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+        <View className="flex-row justify-center items-center ">
+          <View className="flex-1">
+            <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+          </View>
+          <View className="flex-1">
+            <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+          </View>
         </View>
       </Card>
     </View>

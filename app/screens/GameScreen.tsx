@@ -38,6 +38,11 @@ const GameScreen = ({ userNumber, onGameOver }: GameScreenProps) => {
     }
   }, [currentGuess, userNumber, onGameOver]);
 
+  useEffect(() => {
+    minBoundary = 1;
+    maxBoundary = 100;
+  }, []);
+
   const nextGuessHandler = (direction: string) => {
     if (
       (direction === "lower" && currentGuess < userNumber) ||
@@ -72,12 +77,16 @@ const GameScreen = ({ userNumber, onGameOver }: GameScreenProps) => {
       <Card>
         <InstructionText>Higher or lower?</InstructionText>
         <View className="flex-row">
-          <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-            <Ionicons name="remove" size={24} color={Colors.accentLight} />
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
-            <Ionicons name="add" size={24} color={Colors.accentLight} />
-          </PrimaryButton>
+          <View className="flex-1">
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+              <Ionicons name="remove" size={24} color={Colors.accentLight} />
+            </PrimaryButton>
+          </View>
+          <View className="flex-1">
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+              <Ionicons name="add" size={24} color={Colors.accentLight} />
+            </PrimaryButton>
+          </View>
         </View>
       </Card>
     </View>

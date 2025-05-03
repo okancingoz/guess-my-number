@@ -10,8 +10,8 @@ interface PrimaryButtonProps {
 const PrimaryButton = ({ children, onPress }: PrimaryButtonProps) => {
   return (
     <View
-      className="bg-primary900 m-1 shadow-sm 
-    rounded-3xl flex-1 overflow-hidden"
+      className="bg-primary900 m-1 shadow-sm p-2
+    rounded-3xl overflow-hidden"
     >
       <TouchableRipple
         onPress={onPress}

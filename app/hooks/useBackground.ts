@@ -12,7 +12,7 @@ const useBackgroundMusic = () => {
           require("../assets/audio/background.mp3"),
           {
             isLooping: true,
-            volume: 0.1,
+            volume: 0.0,
           }
         );
         soundRef.current = sound;
