@@ -9,6 +9,7 @@ import Colors from "./app/utils/constants/colors";
 import GameOverScreen from "./app/screens/GameOverScreen";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import useBackgroundMusic from "./app/hooks/useBackground";
 
 SplashScreen.preventAutoHideAsync();
 export default function App() {
@@ -16,8 +17,10 @@ export default function App() {
   const [gameIsOver, setGameIsOver] = useState<boolean>(true);
 
   const [loaded, error] = useFonts({
-    'tetris': require("./app/assets/fonts/Tetris.ttf"),
+    tetris: require("./app/assets/fonts/Tetris.ttf"),
   });
+  
+  useBackgroundMusic();
 
   useEffect(() => {
     if (loaded || error) {
