@@ -76,8 +76,8 @@ const GameScreen = ({ userNumber, onGameOver }: GameScreenProps) => {
   const guessRoundsListLength = guessRounds.length;
 
   return (
-    <View className="flex-1 p-12 mt-20">
-      <Title>Oppenent's Guess</Title>
+    <View className="flex-1 p-12 mt-20 items-center">
+      <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
         <InstructionText>Higher or lower?</InstructionText>

@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Dimensions } from "react-native";
 import Title from "../components/ui/Title";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
@@ -8,6 +8,8 @@ interface GameOverProps {
   onStartNewGame: () => void;
 }
 
+const deviceWidth = Dimensions.get("window").width;
+
 const GameOverScreen = ({
   roundsNumber,
   userNumber,
@@ -16,7 +18,13 @@ const GameOverScreen = ({
   return (
     <View className="items-center justify-center flex-1">
       <Title>GAME OVER!</Title>
-      <View className="rounded-full w-64 h-64 overflow-hidden mt-6 border-accentLight border-4">
+      <View
+        style={{
+          width: deviceWidth < 380 ? 150 : 300,
+          height: deviceWidth < 380 ? 150 : 300,
+        }}
+        className="rounded-full overflow-hidden mt-6 border-accentLight border-4"
+      >
         <Image
           className="w-full h-full"
           resizeMode="cover"
